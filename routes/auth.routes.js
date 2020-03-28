@@ -36,6 +36,7 @@ router.post("/auth/login",
         successRedirect: "/",
         failureRedirect: "/auth/login"
     })
+
 );
 
 

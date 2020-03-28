@@ -1,0 +1,48 @@
+<%movies.forEach(movie => { %>
+<div>
+    <p><%= movie.name %></p><br>
+    
+    <img src="<%= movie.image %>" alt="movie image" width="200" height="200">
+    
+    <p>
+        <%= movie.catagory %>
+    </p>
+
+    <a href="<%= movie.url %>">Watch the trailer</a>
+
+    <div>
+        <form method="POST" action="/delete/<%= movie._id %>?_method=DELETE">
+            <button type="submit">Delete Movie</button>
+        </form>
+    </div>
+
+    <hr>
+
+</div>
+<%})%>
+
+<br><br><br>
+
+<form action="/admin/addmovie" method="post">
+    <div>
+        <label>name</label>
+        <input type="text" name="name">
+    </div>
+
+    <div>
+        <label>url</label>
+        <input type="text" name="url">
+    </div>
+
+    <div>
+        <label>image url:</label>
+        <input type="text" name="image">
+    </div>
+
+    <div>
+        <label>catagory:</label>
+        <input type="text" name="catagory">
+    </div>
+
+    <button type="submit">Add</button>
+</form>

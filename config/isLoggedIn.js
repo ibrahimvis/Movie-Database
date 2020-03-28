@@ -1,6 +1,6 @@
 module.exports = (request, response, next) => {
     if (!request.user) {
-        response.redirect("/auth/signin");
+        response.redirect("/auth/login");
     } else {
         next();
     }

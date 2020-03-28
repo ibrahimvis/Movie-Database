@@ -1,1 +1,7 @@
 <h1>Hello, World!</h1>
+
+<%if (user) {%>
+    <%if (user.isAdmin) {%>
+        Welcome admin: <%= user.name %>
+    <%}%>
+<%}%>

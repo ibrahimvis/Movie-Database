@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const bcrypt   = require("bcrypt");
+const bcrypt = require("bcrypt");
 
 let userSchema = mongoose.Schema({
     name: {
@@ -19,7 +19,7 @@ let userSchema = mongoose.Schema({
     },
 
     isAdmin: {
-        type:Boolean,
+        type: Boolean,
         default: false
     },
 
@@ -37,21 +37,19 @@ let userSchema = mongoose.Schema({
 });
 
 userSchema.pre("save", function (next) {
-    var user = this;
-    
-    if (!user.isModified("password")) 
+    let user = this;
+    if (!user.isModified("password")) {
         return next();
-    
+    }
+
     let hash = bcrypt.hashSync(user.password, 10);
     user.password = hash;
-
     next();
 });
 
-userSchema.methods.verifyPassword = function(password) {
+userSchema.methods.verifyPassword = function (password) {
     return bcrypt.compareSync(password, this.password);
 };
 
-let User = mongoose.model("User", userSchema);
-
+const User = mongoose.model("User", userSchema);
 module.exports = User;

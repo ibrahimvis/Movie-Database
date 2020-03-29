@@ -10,9 +10,14 @@
 
 <body>
     <nav>
-        <a href="/auth/login">login</a>
-        <a href="/auth/logout">logout</a>
-        <a href="/auth/signup">signup</a>
+        <a href="/">Home</a>
+        <% if (user) { %>
+            <a href="/user/watchlist">Watchlist</a>
+            <a href="/auth/logout">logout</a>
+        <% } else { %>
+            <a href="/auth/signup">signup</a>
+            <a href="/auth/login">login</a>
+        <% } %>
     </nav>
 
     <%- body %>

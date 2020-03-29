@@ -23,15 +23,10 @@ let userSchema = mongoose.Schema({
         default: false
     },
 
-    movies: [
+    status: [
         {
-            _id: {
-                type: mongoose.Schema.Types.ObjectId,
-                ref: "Movie"
-            },
-            status: {
-                enum: ["towatch", "like", "dislike"]
-            }
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Status"
         }
     ]
 });

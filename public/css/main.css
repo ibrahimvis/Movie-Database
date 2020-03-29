@@ -1,0 +1,112 @@
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.nav_wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
+    gap: 55%;
+    background-color: rgba(12, 39, 73, 0.986);
+    font-size: 20px;
+    font-family: 'Playfair Display', serif;
+    padding: 20px;
+}
+
+.right a{
+    padding-right: 20px;
+    color: white;
+    text-decoration: none;
+}
+
+.logo , .k-link{
+    padding-right: 20px;
+    color: white;
+    text-decoration: none;
+}
+
+.email{
+    margin-left: 50px;
+    margin-right: 50px;
+    font-family: 'Times New Roman', Times, serif;
+
+}
+
+.pass{
+    margin-left: 50px;
+    margin-right: 50px;
+    font-family: 'Times New Roman', Times, serif;
+}
+.name{
+    margin-left: 50px;
+    margin-right: 50px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  
+  button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: 10px;
+    cursor: pointer;
+    width: 20%;
+    margin-left: 40%;
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+  }
+  
+  button:hover {
+    opacity: 0.8;
+  }
+   
+  .imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+  }
+  
+  img.avatar {
+    width: 20%;
+  }
+  .container{
+      padding: 50px;
+      border: 20px solid #ddd;
+  }
+  .container > h1 {
+    font-family: 'Times New Roman', Times, serif;
+}
+.container > h5 {
+    margin-left: 50px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+ }
+  span.psw {
+    float: right;
+    padding-top: 16px;
+    margin: 15px;
+  }
+  
+  @media screen and (max-width: 300px) {
+    span.psw {
+       display: block;
+       float: none;
+    }
+  }
+
+  .footer{
+    background-color: rgba(12, 39, 73, 0.986);
+      padding: 25px;
+  }
+  .footer2{
+    background-color: rgba(12, 39, 73, 0.986);
+      padding: 31px;
+  }
+

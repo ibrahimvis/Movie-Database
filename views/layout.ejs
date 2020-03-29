@@ -6,15 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/main.css" />
     <title>Movie Database</title>
+
 </head>
-
+ <header>
+    <div class="nav_wrapper">
+            <div><a class="logo" href="/" > <img src="/images/logo.jpeg" height="50px" width="100px"></a> 
+            <a href=" " class="k-link">Movies<span class="k-icon"></span></a>
+        </div>
+            <!-- <a href=" " class="k-link k-menu-link">Popular</a> -->
+            <div class="right">
+         <nav>
+            <a  href="/auth/login">login</a>
+            <a href="/auth/logout">logout</a>
+            <a href="/auth/signup">signup</a>                
+        </nav>
+    </div>
+    </div>
+ </header>
 <body>
-    <nav>
-        <a href="/auth/login">login</a>
-        <a href="/auth/logout">logout</a>
-        <a href="/auth/signup">signup</a>
-    </nav>
-
     <%- body %>
 
     <script src="https://code.jquery.com/jquery-3.4.1.js"
@@ -22,5 +31,4 @@
     
     <script src="/js/happy.js"></script>
 </body>
-
 </html>

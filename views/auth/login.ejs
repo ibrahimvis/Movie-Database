@@ -1,15 +1,24 @@
 <form action="/auth/login" method="post">
-    
-    <div>
-        <label>email</label>
-        <input type="email" name="email">
+    <link rel="stylesheet" href="/css/main.css">
+   
+    <div class="container">
+    <div class="imgcontainer">
+        <img src="/images/Avatar.png" alt="Avatar" class="avatar">
+      </div>
+
+    <div class="email">
+        <label for="uname"><b>Email</b></label>
+        <input type="text" placeholder="Enter Your Email" name="uname" required>
     </div>
 
-    <div>
-        <label>password</label>
-        <input type="password" name="password">
+    <div class="pass">
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw" required>
     </div>
 
-    <button type="submit">Login</button>
-
+    <div class="btu">
+        <button type="submit">LOGIN</button>
+    </div>
+</div>
+<div class="footer"> </div>
 </form>

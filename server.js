@@ -1,12 +1,12 @@
 require("dotenv").config();
-const express        = require("express");
+const express = require("express");
 const expressLayouts = require("express-ejs-layouts");
-const session        = require("express-session");
-const mongoose       = require("mongoose");
-const authRoutes     = require("./routes/auth.routes");
-const adminRoutes    = require("./routes/admin.routes");
-const userRoutes     = require("./routes/user.routes");
-let passport         = require("./config/ppConfig");
+const session = require("express-session");
+const mongoose = require("mongoose");
+const authRoutes = require("./routes/auth.routes");
+const adminRoutes = require("./routes/admin.routes");
+const userRoutes = require("./routes/user.routes");
+let passport = require("./config/ppConfig");
 
 let isLoggedIn = require("./config/isLoggedIn");
 
@@ -22,13 +22,13 @@ mongoose.connect(process.env.MONGODB,
         useCreateIndex: true,
         useFindAndModify: false
     },
-    ()=> console.log(`Connected to the mongoDB successfully`),
+    () => console.log(`Connected to the mongoDB successfully`),
     (err) => console.log(err)
 );
 
 mongoose.set("debug", true);
 
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"))
 app.set("view engine", "ejs");
 app.use(expressLayouts);
@@ -54,28 +54,53 @@ app.use(adminRoutes);
 app.use(userRoutes);
 
 app.get("/home", (req, res) => {
+    if (req.user)
+        if (req.user.isAdmin) {
+            res.redirect("/admin");
+        }
+
     Movie.find()
-    
-    .then(movies => {
-        let top5  = [];
-        let trend = [];
-        movies.forEach(movie => {
-            if (movie.isTrending) {
-                trend.push(movie);
-            }
-            if (movie.isTop5) {
-                top5.push(movie);
-            }
+
+        .then(movies => {
+            res.render("index", { movies });
+        })
+
+        .catch(err => {
+            console.log(err);
+            res.send("Check the logs")
         });
 
-        res.render("home", {top5: top5, trend: trend});
 
-    })
-    
-    .catch(err => {
-        console.log(err);
-        res.send("Check the logs");
-    })
 });
 
-app.listen(process.env.PORT, ()=>console.log(`Listening on port numer ${process.env.PORT}`));
+app.get("/", (req, res) => {
+    if (req.user)
+        if (req.user.isAdmin) {
+            res.redirect("/admin");
+        }
+
+    Movie.find()
+
+        .then(movies => {
+            let top5 = [];
+            let trend = [];
+            movies.forEach(movie => {
+                if (movie.isTrending) {
+                    trend.push(movie);
+                }
+                if (movie.isTop5) {
+                    top5.push(movie);
+                }
+            });
+
+            res.render("home", { top5: top5, trend: trend });
+
+        })
+
+        .catch(err => {
+            console.log(err);
+            res.send("Check the logs");
+        })
+});
+
+app.listen(process.env.PORT, () => console.log(`Listening on port numer ${process.env.PORT}`));

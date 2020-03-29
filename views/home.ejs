@@ -1,5 +1,6 @@
+<h1>top 5</h1>
 <div>
-    <% top5.forEach(movie => %>
+    <% top5.forEach(movie => { %>
         <div>
             <p><a href="/show/<%= movie._id %>"><%= movie.name %></a></p><br>
         
@@ -14,8 +15,13 @@
     <% }) %>
 </div>
 
+<br>
+<hr>
+<br>
+
+<h1>trending</h1>
 <div>
-    <% trend.forEach(movie => %>
+    <% trend.forEach(movie => { %>
         <div>
             <p><a href="/show/<%= movie._id %>"><%= movie.name %></a></p><br>
         

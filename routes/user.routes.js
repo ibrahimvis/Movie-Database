@@ -10,24 +10,6 @@ let passport = require("../config/ppConfig");
 
 router.use(methodOverride("_method"));
 
-router.get("/", (req, res) => {
-    if (req.user)
-        if (req.user.isAdmin) {
-            res.redirect("/admin");
-        }
-
-    Movie.find()
-
-        .then(movies => {
-            res.render("index", { movies });
-        })
-
-        .catch(err => {
-            console.log(err);
-            res.send("Check the logs")
-        });
-});
-
 router.post("/user/addmovie/", (req, res) => {
 
     User.findById(req.user._id).populate({

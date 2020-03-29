@@ -3,5 +3,24 @@
 <%if (user) {%>
     <%if (user.isAdmin) {%>
         Welcome admin: <%= user.name %>
+    <% } else { %>
+        Welcome <%= user.name %>
     <%}%>
+
 <%}%>
+
+
+<% movies.forEach(movie => { %>
+
+    <p><a href="/show/<%= movie._id %>"><%= movie.name %></a></p><br>
+    
+    <img src="<%= movie.image %>" alt="movie image" width="200" height="200">
+    
+    <p>
+        <%= movie.catagory %>
+    </p>
+
+    <a href="<%= movie.url %>">Watch the trailer</a>
+
+
+<% }) %>

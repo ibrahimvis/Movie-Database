@@ -5,6 +5,7 @@ const session        = require("express-session");
 const mongoose       = require("mongoose");
 const authRoutes     = require("./routes/auth.routes");
 const adminRoutes    = require("./routes/admin.routes");
+const userRoutes     = require("./routes/user.routes");
 let passport         = require("./config/ppConfig");
 
 const app = express();
@@ -43,16 +44,8 @@ app.use(function (req, res, done) {
     done();
 });
 
-app.get("/", (req, res)=> {
-    if (req.user)
-        if (req.user.isAdmin) {
-            res.redirect("/admin");
-        }
-
-    res.render("index");
-});
-
 app.use(authRoutes);
 app.use(adminRoutes);
+app.use(userRoutes);
 
 app.listen(process.env.PORT, ()=>console.log(`Listening on port numer ${process.env.PORT}`));

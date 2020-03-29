@@ -15,11 +15,16 @@
         </div>
             <!-- <a href=" " class="k-link k-menu-link">Popular</a> -->
             <div class="right">
-         <nav>
-            <a  href="/auth/login">login</a>
-            <a href="/auth/logout">logout</a>
-            <a href="/auth/signup">signup</a>                
-        </nav>
+             <nav>
+              <a href="/">Home</a>
+              <% if (user) { %>
+                  <a href="/user/watchlist">Watchlist</a>
+                  <a href="/auth/logout">logout</a>
+              <% } else { %>
+                  <a href="/auth/signup">signup</a>
+                  <a href="/auth/login">login</a>
+              <% } %>
+          </nav>
     </div>
     </div>
  </header>

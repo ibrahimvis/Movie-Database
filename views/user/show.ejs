@@ -1,0 +1,14 @@
+<p><a href="/show/<%= movie._id %>"><%= movie.name %></a></p><br>
+
+<img src="<%= movie.image %>" alt="movie image" width="200" height="200">
+
+<p>
+    <%= movie.catagory %>
+</p>
+
+<a href="<%= movie.url %>">Watch the trailer</a>
+
+<form action="/user/addmovie/" method="post">
+    <input type="hidden" name="movie_id" value="<%= movie._id %>">
+    <button type="submit">add to watchlist</button>
+</form>

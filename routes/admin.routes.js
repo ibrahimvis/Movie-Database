@@ -28,7 +28,10 @@ router.get("/admin", isLoggedIn, (req, res) => {
 });
 
 router.post("/admin/addmovie", isLoggedIn, (req, res) => {
+    console.log(req.body);
+    
     let movie = new Movie(req.body);
+
     movie.save()
         .then(() => {
             res.redirect("/admin");

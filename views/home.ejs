@@ -1,0 +1,31 @@
+<div>
+    <% top5.forEach(movie => %>
+        <div>
+            <p><a href="/show/<%= movie._id %>"><%= movie.name %></a></p><br>
+        
+            <img src="<%= movie.image %>" alt="movie image" width="200" height="200">
+            
+            <p>
+                <%= movie.catagory %>
+            </p>
+        
+            <a href="<%= movie.url %>">Watch the trailer</a>
+        </div>
+    <% }) %>
+</div>
+
+<div>
+    <% trend.forEach(movie => %>
+        <div>
+            <p><a href="/show/<%= movie._id %>"><%= movie.name %></a></p><br>
+        
+            <img src="<%= movie.image %>" alt="movie image" width="200" height="200">
+            
+            <p>
+                <%= movie.catagory %>
+            </p>
+        
+            <a href="<%= movie.url %>">Watch the trailer</a>
+        </div>
+    <% }) %>
+</div>

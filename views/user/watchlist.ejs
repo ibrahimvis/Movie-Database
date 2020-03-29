@@ -1,0 +1,20 @@
+<% status.forEach(stat => { %>
+    <p><%= stat.movie.name %></p><br>
+
+    <img src="<%= stat.movie.image %>" alt="movie image" width="200" height="200">
+
+    <p>
+        <%= stat.movie.catagory %>
+    </p>
+
+    <p>status: <%= stat.status %></p>
+
+    <p><a href="/user/like/<%= stat._id %>">Like</a></p>
+    <div>
+        <form method="POST" action="/user/watchlist/delete/<%= stat._id %>?_method=DELETE">
+            <button type="submit">Delete from watchlist</button>
+        </form>
+    </div>
+
+<% }) %>
+

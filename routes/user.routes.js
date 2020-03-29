@@ -28,19 +28,6 @@ router.get("/", (req, res) => {
         });
 });
 
-router.get("/show/:id", (req, res) => {
-    Movie.findById(req.params.id)
-
-        .then(movie => {
-            res.render("user/show", { movie })
-        })
-
-        .catch(err => {
-            console.log(err);
-            res.send("Check the logs");
-        });
-});
-
 router.post("/user/addmovie/", (req, res) => {
 
     User.findById(req.user._id).populate({
@@ -81,7 +68,7 @@ router.post("/user/addmovie/", (req, res) => {
                                 if (err) {
                                     res.send(err);
                                 } else {
-                                    res.send(result);
+                                    res.redirect("/user/watchlist");
                                 }
                             }
                         )
@@ -95,50 +82,19 @@ router.post("/user/addmovie/", (req, res) => {
         }
 
     });
+});
 
-    // let status = new Status();
+router.get("/show/:id", (req, res) => {
+    Movie.findById(req.params.id)
 
-    // status.movie = req.body.movie_id;
-    // status.status = "towatch";
+        .then(movie => {
+            res.render("user/show", { movie })
+        })
 
-    // status.save()
-
-    //     .then((s) => {
-    //         //let obj = { movie: req.body.movie_id, status: "towatch" }
-    //         User.findByIdAndUpdate(req.user,
-    //             { $push: { "status": s._id } },
-    //             { safe: true, upsert: true },
-    //             function (err, result) {
-    //                 if (err) {
-    //                     res.send(err);
-    //                 } else {
-    //                     res.send(result);
-    //                 }
-    //             }
-    //         )
-    //     })
-    //     .catch(err => {
-    //         console.log(err);
-    //         res.send("Check the logs");
-    //     });
-
-
-    // User.findByIdAndUpdate(req.user.id, {
-    //     $push: { movies: req.body.movie_id }
-    // }, { 'new': true })
-
-    //     .then(user => {
-    //         //console.log(req.user);
-
-    //         res.send(user);
-
-
-    //     })
-
-    //     .catch(err => {
-    //         console.log(err);
-    //         res.send("Check the logs");
-    //     });
+        .catch(err => {
+            console.log(err);
+            res.send("Check the logs");
+        });
 });
 
 
@@ -161,5 +117,33 @@ router.get("/user/watchlist", isLoggedIn, (req, res) => {
 
     });
 });
+
+router.delete("/user/watchlist/delete/:id", isLoggedIn, (req, res) => {
+    
+    User.findById(req.user._id)
+    
+    .exec(function (err, user) {
+        if (err) {
+            console.log(err);
+            res.send("Check the logs");
+        }
+
+        else {
+            user.status.remove(req.params.id);
+            user.save()
+            
+            .then(() => {
+                res.redirect("/user/watchlist/");
+            })
+            
+            .catch(err => {
+                console.log(err);
+                res.send("check the logs");
+            });
+        }
+    });
+});
+
+
 
 module.exports = router;

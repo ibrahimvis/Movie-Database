@@ -40,9 +40,33 @@ router.post("/admin/addmovie", isLoggedIn, (req, res) => {
             console.log(err);
             res.send("Check the logs");
         });
-})
+});
 
-router.delete("/delete/:id", (req, res) => {
+router.get("/edit/:id", (req, res) => {
+    Movie.findById(req.params.id, function (err, movie) {
+        if (err) {
+            console.log(err);
+            res.send(500, {error: err});
+        }
+
+        res.render("admin/edit", {movie})
+    });
+});
+
+router.put("/edit/:id", isLoggedIn, (req, res) => {
+    let desc = req.body.desc;
+    let isTrending = req.body.isTrending;
+    let isTop5 = req.body.isTop5;
+    Movie.findByIdAndUpdate(req.params.id, {desc, isTop5, isTrending}, function (err, result) {
+        if (err) {
+            console.log(err);
+            res.send(500, {error: err});
+        }
+        res.redirect("/admin");
+    });
+});
+
+router.delete("/delete/:id", isLoggedIn, (req, res) => {
     Movie.findByIdAndDelete(req.params.id).then(movie => {
         res.redirect("/admin");
     });

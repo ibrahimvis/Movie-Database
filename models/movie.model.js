@@ -5,6 +5,7 @@ let movieSchema = mongoose.Schema({
     url: String,
     image: String,
     catagory: String,
+    desc: String,
     
     isTop5: {
         type: Boolean,

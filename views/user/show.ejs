@@ -6,9 +6,15 @@
     <%= movie.catagory %>
 </p>
 
+<p>
+    <%= movie.desc %>
+</p>
+
 <a href="<%= movie.url %>">Watch the trailer</a>
 
+<% if (user) { %>
 <form action="/user/addmovie/" method="post">
     <input type="hidden" name="movie_id" value="<%= movie._id %>">
     <button type="submit">add to watchlist</button>
 </form>
+<% } %>

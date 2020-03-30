@@ -1,0 +1,19 @@
+<div>
+    <form method="POST" action="/edit/<%= movie._id %>?_method=PUT">
+        
+        <div>
+            <label>descritpion:</label><br>
+            <textarea name="desc" rows="4" cols="50"><%= movie.desc %></textarea>
+        </div>
+
+        <div>
+            <input type="checkbox" id="isTop5" name="isTop5" value="true">
+            <label for="isTop5"> Is it a top 5</label><br>
+            <input type="checkbox" id="isTrending" name="isTrending" value="true">
+            <label for="isTrending"> Is it trending</label><br>
+        </div>
+
+        <button type="submit">Edit the Movie</button>
+
+    </form>
+</div>

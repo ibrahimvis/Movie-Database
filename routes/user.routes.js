@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const methodOverride = require("method-override");
+const bcrypt = require("bcrypt");
 
 let User = require("../models/user.model");
 let Movie = require("../models/movie.model");
@@ -99,6 +100,26 @@ router.get("/user/watchlist", isLoggedIn, (req, res) => {
 
     });
 });
+
+
+router.get("/user/edit", isLoggedIn, (req, res) => {
+    res.render("user/edit");
+});
+
+router.put("/user/edit", isLoggedIn, (req, res) => {
+    let pass = bcrypt.hashSync(req.body.password, 10);
+    User.findByIdAndUpdate(req.user._id,{ $set : {password: pass} },
+        function (err, user) {
+            if (err) {
+                console.log(err);
+                res.send(500, {error: err});
+            }
+
+            res.redirect("/");
+        }
+    )
+});
+
 
 router.delete("/user/watchlist/delete/:id", isLoggedIn, (req, res) => {
     

@@ -1,34 +1,49 @@
-<head> 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>movie page</title>
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link href="/fontawesome/css/all.css" rel="stylesheet"> <!--load all styles -->
 </head>
-    <div class="container-fluid">
-        <div class="row">
-            
+<body>
+    <div class="box">
+        <div class="pic">
+            <img src="<%= movie.image %>" alt="movie image" width="35%" height="35%">
+            <div class="des">
+                <div class="moviename">
+                    <a href="/show/<%= movie._id %>"><%= movie.name %></a>
+                    <div class="cat">
+                        <%= movie.catagory %>
+                        <div class="overwrite">
+                            <h3>Overview</h3>
+                            <%= movie.desc %>
+                            <div class="icon">
+                                <a class="fab fa-youtube" href="<%= movie.url %>"></a>
 
-<div class="col-xs-2" ><img src="<%= movie.image %>" alt="movie image" width="200" height="200"><a href="/show/<%= movie._id %>"><%= movie.name %></a></div>
+                                  <% if (user) { %>
+                                  <p><a href="/user/like/<%= movie._id %>">Like</a></p>
+                                 <form action="/user/addmovie/" method="post">
+                                 <input type="hidden" name="movie_id" value="<%= movie._id %>">
+                                 <button class="fas fa-plus-circle" type="submit"></button>
+                                 </form>
+                                  <% } %>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
         </div>
+
     </div>
-<p>
-    
-    <%= movie.catagory %>
-</p>
-
-<p>
-    <%= movie.desc %>
-</p>
-
-<a class="fab fa-youtube" href="<%= movie.url %>"></a>
-
-<% if (user) { %>
-    <p><a href="/user/like/<%= movie._id %>">Like</a></p>
-<form action="/user/addmovie/" method="post">
-    <input type="hidden" name="movie_id" value="<%= movie._id %>">
-    <button class="fas fa-plus-circle" type="submit"></button>
-</form>
-<% } %>
-
+    <div class="footer3"> </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>

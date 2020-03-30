@@ -4,10 +4,7 @@ let User = require("../models/user.model");
 let Movie = require("../models/movie.model");
 
 router.get("/home", (req, res) => {
-    if (req.user)
-        if (req.user.isAdmin) {
-            res.redirect("/admin");
-        }
+    
 
     Movie.find()
 
@@ -24,10 +21,6 @@ router.get("/home", (req, res) => {
 });
 
 router.get("/", (req, res) => {
-    if (req.user)
-        if (req.user.isAdmin) {
-            res.redirect("/admin");
-        }
 
     Movie.find()
 

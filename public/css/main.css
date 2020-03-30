@@ -6,17 +6,24 @@ body {
 .nav_wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr ;
-    gap: 55%;
+    gap: 50%;
     background-color: rgba(12, 39, 73, 0.986);
     font-size: 20px;
     font-family: 'Playfair Display', serif;
     padding: 20px;
 }
 
-.right a{
+
+.right1 a{
     padding-right: 20px;
     color: white;
     text-decoration: none;
+}
+
+.right2 a{
+  padding-right: 20px;
+  color: white;
+  text-decoration: none;
 }
 
 .logo , .k-link{
@@ -110,3 +117,40 @@ input[type=text], input[type=password] {
       padding: 31px;
   }
 
+  .box{
+    padding: 100px;
+    border: 20px solid #ddd;
+    grid-template-rows: 1fr 1fr ;
+  }
+   .box > img{
+    opacity: 0.5;
+   }
+  
+  .des{
+    grid-template-rows: 1fr 1fr ;
+  }
+
+  .footer3{
+    background-color: rgba(12, 39, 73, 0.986);
+      padding: 31px;
+  }
+
+  .far {
+    color: white;
+  }
+
+  .col-xs-2 {
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* grid-template-columns: 1fr 1fr 1fr 1fr; */
+    /* margin: 2%; */
+
+  }
+  .footer4{
+    background-color: rgba(12, 39, 73, 0.986);
+      padding: 31px;
+  }
+  /* .trending{
+  
+
+  } */

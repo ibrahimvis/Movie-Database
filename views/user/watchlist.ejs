@@ -9,7 +9,7 @@
 
     <p>status: <%= stat.status %></p>
 
-    <p><a href="/user/like/<%= stat._id %>">Like</a></p>
+    
     <div>
         <form method="POST" action="/user/watchlist/delete/<%= stat._id %>?_method=DELETE">
             <button type="submit">Delete from watchlist</button>

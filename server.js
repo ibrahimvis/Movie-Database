@@ -3,12 +3,13 @@ const express = require("express");
 const expressLayouts = require("express-ejs-layouts");
 const session = require("express-session");
 const mongoose = require("mongoose");
+let passport = require("./config/ppConfig");
+let isLoggedIn = require("./config/isLoggedIn");
+
 const authRoutes = require("./routes/auth.routes");
 const adminRoutes = require("./routes/admin.routes");
 const userRoutes = require("./routes/user.routes");
-let passport = require("./config/ppConfig");
-
-let isLoggedIn = require("./config/isLoggedIn");
+const mainRoutes = require("./routes/main.routes");
 
 let User = require("./models/user.model");
 let Movie = require("./models/movie.model");
@@ -52,55 +53,6 @@ app.use(function (req, res, done) {
 app.use(authRoutes);
 app.use(adminRoutes);
 app.use(userRoutes);
-
-app.get("/home", (req, res) => {
-    if (req.user)
-        if (req.user.isAdmin) {
-            res.redirect("/admin");
-        }
-
-    Movie.find()
-
-        .then(movies => {
-            res.render("index", { movies });
-        })
-
-        .catch(err => {
-            console.log(err);
-            res.send("Check the logs")
-        });
-
-
-});
-
-app.get("/", (req, res) => {
-    if (req.user)
-        if (req.user.isAdmin) {
-            res.redirect("/admin");
-        }
-
-    Movie.find()
-
-        .then(movies => {
-            let top5 = [];
-            let trend = [];
-            movies.forEach(movie => {
-                if (movie.isTrending) {
-                    trend.push(movie);
-                }
-                if (movie.isTop5) {
-                    top5.push(movie);
-                }
-            });
-
-            res.render("home", { top5: top5, trend: trend });
-
-        })
-
-        .catch(err => {
-            console.log(err);
-            res.send("Check the logs");
-        })
-});
+app.use(mainRoutes);
 
 app.listen(process.env.PORT, () => console.log(`Listening on port numer ${process.env.PORT}`));

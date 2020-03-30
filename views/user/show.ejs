@@ -13,6 +13,7 @@
 <a href="<%= movie.url %>">Watch the trailer</a>
 
 <% if (user) { %>
+    <p><a href="/user/like/<%= movie._id %>">Like</a></p>
 <form action="/user/addmovie/" method="post">
     <input type="hidden" name="movie_id" value="<%= movie._id %>">
     <button type="submit">add to watchlist</button>

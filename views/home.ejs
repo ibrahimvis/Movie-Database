@@ -1,37 +1,43 @@
-<h1>top 5</h1>
-<div>
-    <% top5.forEach(movie => { %>
-        <div>
-            <p><a href="/show/<%= movie._id %>"><%= movie.name %></a></p><br>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+    <h1>top 5</h1>
+<div class="container-fluid">
+<div class="row">
+    <% top5.forEach(movie => { %>  
         
-            <img src="<%= movie.image %>" alt="movie image" width="200" height="200">
-            
-            <p>
-                <%= movie.catagory %>
-            </p>
-        
-            <a href="<%= movie.url %>">Watch the trailer</a>
-        </div>
+    <div class="col-xs-2" ><img src="<%= movie.image %>" alt="movie image" width="200" height="200"><a href="/show/<%= movie._id %>"><%= movie.name %></a></div>
+    
     <% }) %>
 </div>
+</div>
+</div>
+
 
 <br>
 <hr>
 <br>
 
 <h1>trending</h1>
-<div>
+    <div class="container-fluid">
+        <div class="row">
     <% trend.forEach(movie => { %>
-        <div>
-            <p><a href="/show/<%= movie._id %>"><%= movie.name %></a></p><br>
+ <div class="col-xs-2" ><img src="<%= movie.image %>" alt="movie image" width="200" height="200"><a href="/show/<%= movie._id %>"><%= movie.name %></a></div>
         
-            <img src="<%= movie.image %>" alt="movie image" width="200" height="200">
-            
-            <p>
-                <%= movie.catagory %>
-            </p>
-        
-            <a href="<%= movie.url %>">Watch the trailer</a>
-        </div>
     <% }) %>
 </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>

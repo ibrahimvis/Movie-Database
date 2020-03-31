@@ -1,15 +1,13 @@
 const router = require("express").Router();
 const methodOverride = require("method-override");
 const bcrypt = require("bcrypt");
-
 let User = require("../models/user.model");
 let Movie = require("../models/movie.model");
 let Status = require("../models/status.model");
-
 let isLoggedIn = require("../config/isLoggedIn");
 let passport = require("../config/ppConfig");
-
 router.use(methodOverride("_method"));
+
 
 router.get("/user/addmovie/:id", (req, res) => {
 
@@ -24,7 +22,6 @@ router.get("/user/addmovie/:id", (req, res) => {
             console.log(err);
             res.send("Check the logs");
         }
-
         else {
             let x = true;
             for (let index = 0; index < user.status.length; index++) {
@@ -34,15 +31,12 @@ router.get("/user/addmovie/:id", (req, res) => {
                     x = !x;
                 }
             }
-
             if (x) {
                 let status = new Status();
 
                 status.movie = req.params.id;
                 status.status = "towatch";
-
                 status.save()
-
                     .then((s) => {
                         User.findByIdAndUpdate(req.user._id,
                             { $push: { "status": s._id } },
@@ -56,20 +50,18 @@ router.get("/user/addmovie/:id", (req, res) => {
                             }
                         )
                     })
-
                     .catch(err => {
                         console.log(err);
                         res.send("Check the logs");
                     });
             }
         }
-
     });
 });
 
+
 router.get("/show/:id", (req, res) => {
     Movie.findById(req.params.id)
-
         .then(movie => {
             if (!req.user)
                 res.render("user/show", { movie });
@@ -95,7 +87,6 @@ router.get("/show/:id", (req, res) => {
                 
             }
         })
-
         .catch(err => {
             console.log(err);
             res.send("Check the logs");
@@ -103,7 +94,6 @@ router.get("/show/:id", (req, res) => {
 });
 
 // router.get("/user/like")
-
 
 router.get("/user/watchlist", isLoggedIn, (req, res) => {
     User.findById(req.user._id).populate({
@@ -117,11 +107,9 @@ router.get("/user/watchlist", isLoggedIn, (req, res) => {
             console.log(err);
             res.send("Check the logs");
         }
-
         else {
             res.render("user/watchlist", { status: user.status })
         }
-
     });
 });
 
@@ -129,6 +117,7 @@ router.get("/user/watchlist", isLoggedIn, (req, res) => {
 router.get("/user/edit", isLoggedIn, (req, res) => {
     res.render("user/edit");
 });
+
 
 router.put("/user/edit", isLoggedIn, (req, res) => {
     let pass = bcrypt.hashSync(req.body.password, 10);
@@ -138,7 +127,6 @@ router.put("/user/edit", isLoggedIn, (req, res) => {
                 console.log(err);
                 res.send(500, { error: err });
             }
-
             res.redirect("/");
         }
     )
@@ -151,6 +139,7 @@ router.get("/user/profile/delete/:id", isLoggedIn, (req, res) => {
 
         .exec(function (err, user) {
             if (err) {
+              
                 console.log(err);
                 res.send("Check the logs");
             }
@@ -194,6 +183,4 @@ router.get("/user/profile", isLoggedIn, (req, res, next) => {
         }
     });
 });
-
-
 module.exports = router;

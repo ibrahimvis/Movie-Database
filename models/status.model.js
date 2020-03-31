@@ -6,6 +6,11 @@ let statusSchema = mongoose.Schema({
         ref: "Movie"
     },
 
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
+    },
+
     status: {
         type: String,
         enum: ["towatch", "like", "dislike"],

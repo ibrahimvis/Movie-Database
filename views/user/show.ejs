@@ -22,10 +22,12 @@
                                 <a class="fab fa-2x fa-youtube" href="<%= movie.url %>"></a>
                                 <% if (user) { %>
                                     <a class="fas fa-2x fa-plus-circle" href="/user/addmovie/<%= movie._id %>"></a>
-                                    <% if (stat == "towatch") { %>
-                                        <a class="fab fa-gratipay" style="margin: 0 30px;" href="/user/like/<%= movie._id %>"></a>          
-                                    <% } else { %>
-                                        <a class="fas fa-2x fa-heart" style="margin: 0 30px;" href="/user/like/<%= movie._id %>"></a>                                        
+                                    <% if (check) { %>
+                                        <% if (stat == "like") { %>
+                                            <a class="fab fa-2x fa-gratipay" style="margin: 0 30px;" href="/user/like/<%= movie._id %>"></a>  
+                                        <% } else { %>
+                                            <a class="fas fa-2x fa-heart" style="margin: 0 30px;" href="/user/like/<%= movie._id %>"></a>                                        
+                                        <% } %>       
                                     <% } %>
                                 <% } %>
 

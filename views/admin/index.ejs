@@ -1,56 +1,63 @@
+<button id="showedit">Edit</button>
+<button id="showadd">Add</button>
+
 <%movies.forEach(movie => { %>
 <div class="editmovie">
-
-    <img src="<%= movie.image %>" alt="movie image" width="25%" height="25%">
-    <p><%= movie.name %> <a href="/edit/<%= movie._id %>">Edit</a></p><br>
-        
-        <%= movie.catagory %>
-  
     <div>
-        <form method="POST" action="/delete/<%= movie._id %>?_method=DELETE">
-            <button type="submit">Delete Movie</button>
-        </form>
-    </div>
+        <div>
+            <img src="<%= movie.image %>" alt="movie image" width="200" height="400">
+        </div>
+        <div>
+            <%= movie.name %>
+        </div>
+        <div>
+            <%= movie.catagory %>
+        </div>
+        <div>
+            <a href="/edit/<%= movie._id %>">Edit</a>
 
+            <form method="POST" action="/delete/<%= movie._id %>?_method=DELETE">
+                <button type="submit">Delete Movie</button>
+            </form>
+        </div>
+    </div>
 </div>
 <%})%>
 
-<br><br><br>
-
 <form action="/admin/addmovie" method="post">
     <div class="addmovie">
-    <div>
-        <label> Movie Name:</label>
-        <input type="text" name="name">
-    </div>
+        <div>
+            <label> Movie Name:</label>
+            <input type="text" name="name">
+        </div>
 
-    <div>
-        <label>Trailer URL</label>
-        <input type="text" name="url">
-    </div>
+        <div>
+            <label>Trailer URL</label>
+            <input type="text" name="url">
+        </div>
 
-    <div>
-        <label>Image URL:</label>
-        <input type="text" name="image">
-    </div>
+        <div>
+            <label>Image URL:</label>
+            <input type="text" name="image">
+        </div>
 
-    <div>
-        <label>Catagory:</label>
-        <input type="text" name="catagory">
-    </div>
+        <div>
+            <label>Catagory:</label>
+            <input type="text" name="catagory">
+        </div>
 
-    <div>
-        <label>Overview:</label>
-        <input type="text" name="desc">
-    </div>
+        <div>
+            <label>Overview:</label>
+            <input type="text" name="desc">
+        </div>
 
-    <div>
-        <input type="checkbox" id="isTop5" name="isTop5" value="true">
-        <label for="isTop5"> Is it a top 5</label><br>
-        <input type="checkbox" id="isTrending" name="isTrending" value="true">
-        <label for="isTrending"> Is it trending</label><br>
-    </div>
+        <div>
+            <input type="checkbox" id="isTop5" name="isTop5" value="true">
+            <label for="isTop5"> Is it a top 5</label><br>
+            <input type="checkbox" id="isTrending" name="isTrending" value="true">
+            <label for="isTrending"> Is it trending</label><br>
+        </div>
 
-    <button type="submit">Add</button>
-</div>
+        <button type="submit">Add</button>
+    </div>
 </form>

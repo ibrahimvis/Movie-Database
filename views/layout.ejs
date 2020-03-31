@@ -19,14 +19,14 @@
             <div class="right1">
              <nav>
               <% if (user) { %>
-                <a class="far fa-2x fa-user-circle" href="/user/profile"></a>
+                  <a class="far fa-2x fa-user-circle" href="/user/profile">Profile</a>
                   <a href="/auth/logout">LOGOUT</a>
                 </nav>
             </div>
             <div class="right2">
                 <nav>
               <% } else { %>
-                  <a href="/auth/signup">SIGN IN </a>
+                  <a href="/auth/signup">SIGN UP</a>
                   <a href="/auth/login">LOGIN</a>
               <% } %>
             </nav>

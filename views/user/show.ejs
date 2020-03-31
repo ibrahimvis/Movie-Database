@@ -23,14 +23,14 @@
                             <%= movie.desc %>
                             <div class="icon">
                                 <a class="fab fa-2x fa-youtube" href="<%= movie.url %>"></a>
-
-                                  <% if (user) { %>
-                                  <a class="fas fa-2x fa-heart" style="margin: 0 30px;" href="/user/like/<%= movie._id %>"></a>
-                                 <form action="/user/addmovie/" method="post">
-                                 <input type="hidden" name="movie_id" value="<%= movie._id %>">
-                                 <a class="fas fa-2x fa-plus-circle" type="submit"></a>
-                                 </form>
-                                  <% } %>
+                                <% if (user) { %>
+                                    <a class="fas fa-2x fa-plus-circle" href="/user/addmovie/<%= movie._id %>"></a>
+                                    <% if (stat == "towatch") { %>
+                                        <a class="fab fa-gratipay" style="margin: 0 30px;" href="/user/like/<%= movie._id %>"></a>          
+                                    <% } else { %>
+                                        <a class="fas fa-2x fa-heart" style="margin: 0 30px;" href="/user/like/<%= movie._id %>"></a>                                        
+                                    <% } %>
+                                <% } %>
 
                             </div>
                         </div>

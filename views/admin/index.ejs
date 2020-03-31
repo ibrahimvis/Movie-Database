@@ -1,28 +1,16 @@
 <%movies.forEach(movie => { %>
-<div>
+<div class="editmovie">
+
+    <img src="<%= movie.image %>" alt="movie image" width="25%" height="25%">
     <p><%= movie.name %> <a href="/edit/<%= movie._id %>">Edit</a></p><br>
-    
-    <img src="<%= movie.image %>" alt="movie image" width="200" height="200">
-    
-    <p>
+        
         <%= movie.catagory %>
-    </p>
-
-    <p><%= movie.desc %></p>
-
-    <a href="<%= movie.url %>">Watch the trailer</a>
-
-    
-
+  
     <div>
         <form method="POST" action="/delete/<%= movie._id %>?_method=DELETE">
             <button type="submit">Delete Movie</button>
         </form>
     </div>
-
-    <br>
-    <hr>
-    <br>
 
 </div>
 <%})%>
@@ -30,28 +18,29 @@
 <br><br><br>
 
 <form action="/admin/addmovie" method="post">
+    <div class="addmovie">
     <div>
-        <label>name</label>
+        <label> Movie Name:</label>
         <input type="text" name="name">
     </div>
 
     <div>
-        <label>url</label>
+        <label>Trailer URL</label>
         <input type="text" name="url">
     </div>
 
     <div>
-        <label>image url:</label>
+        <label>Image URL:</label>
         <input type="text" name="image">
     </div>
 
     <div>
-        <label>catagory:</label>
+        <label>Catagory:</label>
         <input type="text" name="catagory">
     </div>
 
     <div>
-        <label>descritpion:</label>
+        <label>Overview:</label>
         <input type="text" name="desc">
     </div>
 
@@ -63,4 +52,5 @@
     </div>
 
     <button type="submit">Add</button>
+</div>
 </form>

@@ -146,7 +146,23 @@ router.delete("/user/watchlist/delete/:id", isLoggedIn, (req, res) => {
         }
     });
 });
-
+router.get("/user/profile", (req, res) => {
+    User.findById(req.user._id).populate({
+        path: 'status',
+        populate: {
+            path: 'movie',
+            model: 'Movie'
+        }
+    }).exec(function (err, user) {
+        if (err) {
+            console.log(err);
+            res.send("Check the logs");
+        }
+        else {
+            res.render("user/profile", { status: user.status })
+        }
+    });
+});
 
 
 module.exports = router;

@@ -1,6 +1,14 @@
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
+  /* background-image: url(https://i.pinimg.com/originals/0c/1b/54/0c1b541757e16d7c32736c0ec00d416f.jpg); */
+  background-size: cover;
+}
+input{
+  opacity: .5;
+}
+input:focus{
+  opacity: 5;
 }
 
 .nav_wrapper {
@@ -36,6 +44,7 @@ body {
     margin-left: 50px;
     margin-right: 50px;
     font-family: 'Times New Roman', Times, serif;
+  
 
 }
 
@@ -43,11 +52,13 @@ body {
     margin-left: 50px;
     margin-right: 50px;
     font-family: 'Times New Roman', Times, serif;
+    
 }
 .name{
     margin-left: 50px;
     margin-right: 50px;
     font-family: 'Times New Roman', Times, serif;
+    
 }
 
 input[type=text], input[type=password] {
@@ -90,10 +101,12 @@ input[type=text], input[type=password] {
   }
   .container > h1 {
     font-family: 'Times New Roman', Times, serif;
+    color: white;
 }
 .container > h5 {
     margin-left: 50px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: white;
  }
   span.psw {
     float: right;
@@ -120,15 +133,32 @@ input[type=text], input[type=password] {
   .box{
     padding: 100px;
     border: 20px solid #ddd;
-    grid-template-rows: 1fr 1fr ;
   }
-   .box > img{
-    opacity: 0.5;
-   }
-  
   .des{
-    grid-template-rows: 1fr 1fr ;
+    margin-left: 40px;
+    padding-top: 80px;
   }
+  .pic{
+    display: flex;
+    justify-content: space-around; 
+   }
+   .moviename > a{
+    color:black;
+    font-size: 200%;
+   }
+   .overwrite > h3{
+     font-weight: bold;
+     
+   }
+   .icon{
+     padding: 30px;
+    flex-direction: row;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+
+   }
 
   .footer3{
     background-color: rgba(12, 39, 73, 0.986);
@@ -142,15 +172,77 @@ input[type=text], input[type=password] {
   .col-xs-2 {
     text-align: center;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    /* grid-template-columns: 1fr 1fr 1fr 1fr; */
-    /* margin: 2%; */
+    padding-left: 20px;
 
   }
   .footer4{
     background-color: rgba(12, 39, 73, 0.986);
       padding: 31px;
   }
-  /* .trending{
-  
 
+  .top{
+    width: 100%;
+    margin: 0 7%;
+  }
+  .trending{
+    /* display: flex;
+    flex-direction: row; */
+    width: 100%;
+    margin: 0 auto;
+    padding-bottom: 20px;
+  }
+
+  .movielistContainer {
+    width: 80%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 10px;
+  }
+  /* .movielistContainer > div{
+    padding: 15px;
   } */
+  .movielistContainer > div > a {
+    font-size: 100%;
+    font-weight: bold;
+    color: black;
+    
+}
+  .watchlistContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  #item1 {
+    display: grid;
+    grid-template-rows: repeat(4, 1);
+    width: 50%;
+    height: 30%;
+    margin: 20% auto;
+  }
+  #item1 > img {
+    margin-left: 10%;
+  }
+  #item2 > div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .addmovie{
+    margin-left: 50px;
+    margin-right: 50px;
+    font-family: 'Times New Roman', Times, serif;
+
+  }
+  .editmovie{
+    padding: 20px;
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+  .edit2{
+    padding: 50px;
+    margin-left: 50px;
+    margin-right: 50px;
+    font-family: 'Times New Roman', Times, serif;
+  }

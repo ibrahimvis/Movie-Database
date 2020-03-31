@@ -47,6 +47,8 @@ app.use(passport.session());
 
 app.use(function (req, res, done) {
     res.locals.user = req.user;
+    res.locals.images=["./images/4.jpg","/images/8.jpg","/images/images.jpeg"]
+    res.locals.r = Math.floor(Math.random() * Math.floor(3));
     done();
 });
 

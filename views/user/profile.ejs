@@ -10,10 +10,11 @@
         <h3>Favorite Movies</h3>
         <div>
             <% status.forEach(stat => { %>
-            <div>
-                <img src="<%= stat.movie.image %>" alt="movie image" width="200" height="200"><br>
-                <p><%= stat.movie.name %></p>
-            </div>
+                <div>
+                    <img src="<%= stat.movie.image %>" alt="movie image" width="200" height="200"><br>
+                    <p><%= stat.movie.name %></p>
+                    <a href="/user/profile/delete/<%= stat._id %>">Delete from watchlist</a>
+                </div>
             <% }) %>
         </div>
     </div>

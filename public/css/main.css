@@ -379,3 +379,8 @@ input[type=text], input[type=password] {
   border: 1px solid transparent;
   /* border-radius: 0.25rem; */
 }
+
+#search{
+  opacity: 1 !important;
+  filter: grayscale(0%) !important;
+}

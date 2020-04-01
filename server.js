@@ -59,8 +59,4 @@ app.use(adminRoutes);
 app.use(userRoutes);
 app.use(mainRoutes);
 
-app.get("*", (req, res) => {
-    res.send("aaa")
-})
-
 app.listen(process.env.PORT, () => console.log(`Listening on port numer ${process.env.PORT}`));

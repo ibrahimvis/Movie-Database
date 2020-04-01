@@ -186,7 +186,10 @@ router.get("/user/profile", isLoggedIn, (req, res, next) => {
             res.send("Check the logs");
         }
         else {
-            res.render("user/profile", { status: user.status })
+            if (!user.status)
+                res.render("user/profile", { status: user.status })
+            else 
+                res.redirect("/")
         }
     });
 });

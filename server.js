@@ -40,7 +40,7 @@ app.use(session({
     secret: process.env.SECRET,
     resave: false,
     saveUninitialized: true,
-    maxAge: Date.now() + (30 * 86400 * 1000),
+    // maxAge: Date.now() + (30 * 86400 * 1000),
     store: new MongoStore({url:process.env.MONGODB})
 }));
 

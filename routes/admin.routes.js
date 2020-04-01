@@ -55,9 +55,10 @@ router.get("/edit/:id", (req, res) => {
 
 router.put("/edit/:id", isLoggedIn, (req, res) => {
     let desc = req.body.desc;
+    let url  = req.body.url;
     let isTrending = req.body.isTrending;
     let isTop5 = req.body.isTop5;
-    Movie.findByIdAndUpdate(req.params.id, {desc, isTop5, isTrending}, function (err, result) {
+    Movie.findByIdAndUpdate(req.params.id, {desc, isTop5, isTrending, url}, function (err, result) {
         if (err) {
             console.log(err);
             res.send(500, {error: err});

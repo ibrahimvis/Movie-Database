@@ -169,29 +169,27 @@ router.get("/user/profile/delete/:id", isLoggedIn, (req, res) => {
 
 router.get("/user/profile", isLoggedIn, (req, res, next) => {
 
-    if (req.user.isAdmin) {
+    if (!req.user.isAdmin) {
+        User.findById(req.user._id).populate({
+            path: 'status',
+            populate: {
+                path: 'movie',
+                model: 'Movie'
+            }
+        }).exec(function (err, user) {
+            if (err) {
+                console.log(err);
+                res.send("Check the logs");
+            }
+            else {
+                res.render("user/profile", { status: user.status })
+            }
+        });        
+    } else{
         res.redirect("/admin");
-        next();
     }
 
-    User.findById(req.user._id).populate({
-        path: 'status',
-        populate: {
-            path: 'movie',
-            model: 'Movie'
-        }
-    }).exec(function (err, user) {
-        if (err) {
-            console.log(err);
-            res.send("Check the logs");
-        }
-        else {
-            if (!user.status)
-                res.render("user/profile", { status: user.status })
-            else 
-                res.redirect("/")
-        }
-    });
+    
 });
 
 

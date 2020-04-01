@@ -27,8 +27,10 @@ router.get("/user/addmovie/:id", (req, res) => {
             for (let index = 0; index < user.status.length; index++) {
                 var element = user.status[index];
                 if (element.movie._id == req.params.id) {
-                    res.send("Movie exsits in your watchlist");
+                    req.flash("error", "Movie exsits in your watchlist");
+                    res.redirect("/show/"+element.movie._id);
                     x = !x;
+                    break;
                 }
             }
             if (x) {

@@ -7,6 +7,8 @@ const MongoStore = require("connect-mongo")(session);
 let passport = require("./config/ppConfig");
 let isLoggedIn = require("./config/isLoggedIn");
 
+const flash = require("connect-flash");
+
 const authRoutes = require("./routes/auth.routes");
 const adminRoutes = require("./routes/admin.routes");
 const userRoutes = require("./routes/user.routes");
@@ -46,8 +48,10 @@ app.use(session({
 
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash());
 
 app.use(function (req, res, done) {
+    res.locals.alerts = req.flash();
     res.locals.user = req.user;
     res.locals.images=["./images/78.jpg","/images/79.jpg"]
     res.locals.r = Math.floor(Math.random() * Math.floor(2));

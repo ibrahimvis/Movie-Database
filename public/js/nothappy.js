@@ -1,3 +1,9 @@
+setTimeout(() => {
+    $(".alert").fadeOut(1000, function() {
+      $(this).remove();
+    });
+  }, 2000);
+
 $(".editmovie").hide();
 $(".addmovie").hide();
 

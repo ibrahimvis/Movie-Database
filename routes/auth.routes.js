@@ -17,12 +17,20 @@ router.post("/auth/signup", (req, res) => {
 
         passport.authenticate("local", {
             successRedirect: "/",
-            failureRedirect: "/auth/signup"
+            failureRedirect: "/auth/signup",
+            successFlash: "Account created and You have logged In!"
         })(req, res);
 
     }).catch(err => {
-        console.log(err);
-        res.send("Check the logs");
+        if (err.code != 11000) {
+            res.send(500, {error:err});
+        } else {
+            console.log("Email Exists");
+            req.flash("error", "Email Exists");
+            return res.redirect("/auth/signup");
+        }
+
+        
     });
 });
 
@@ -34,7 +42,9 @@ router.get("/auth/login", (req, res) => {
 router.post("/auth/login",
     passport.authenticate("local", {
         successRedirect: "/",
-        failureRedirect: "/auth/login"
+        failureRedirect: "/auth/login",
+        failureFlash: "Invalid Username or Password",
+        successFlash: "You have logged In!"
     })
 
 );
@@ -42,6 +52,7 @@ router.post("/auth/login",
 
 router.get("/auth/logout", (req, res) => {
     req.logout();
+    req.flash("success", "See you soon!");
     res.redirect("/")
 });
 

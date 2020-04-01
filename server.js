@@ -3,6 +3,7 @@ const express = require("express");
 const expressLayouts = require("express-ejs-layouts");
 const session = require("express-session");
 const mongoose = require("mongoose");
+const MongoStore = require("connect-mongo")(session);
 let passport = require("./config/ppConfig");
 let isLoggedIn = require("./config/isLoggedIn");
 
@@ -39,7 +40,8 @@ app.use(session({
     secret: process.env.SECRET,
     resave: false,
     saveUninitialized: true,
-    maxAge: Date.now() + (30 * 86400 * 1000)
+    maxAge: Date.now() + (30 * 86400 * 1000),
+    store: new MongoStore({url:process.env.MONGODB})
 }));
 
 app.use(passport.initialize());

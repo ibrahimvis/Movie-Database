@@ -15,6 +15,6 @@ $("#showadd").click(() => {
 $('#search').keypress(function(event){
     var searchstring = $('#search').val();
     if (event.keyCode == 13) {
-        window.location.replace("http://localhost:3000/" + searchstring);
+        window.location.replace(window.location.origin + "/" + searchstring);
     }
 });

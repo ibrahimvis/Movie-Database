@@ -23,15 +23,17 @@
             <div class="right1">
              <nav>
               <% if (user) { %>
-                  <a class="far fa-2x fa-user-circle" href="/user/profile"></a>
-                  <a href="/auth/logout">LOGOUT</a>
+
+                  <a class="far fa-1x fa-user-circle" style="color: white;text-decoration: none; margin: 20px;"href="/user/profile"></a>
+                  <a style="color: white;text-decoration: none;"" href="/auth/logout">LOGOUT</a>
+
                 </nav>
             </div>
             <div class="right2">
                 <nav>
               <% } else { %>
-                  <a href="/auth/signup">SIGN UP</a>
-                  <a href="/auth/login">LOGIN</a>
+                  <a style="color: white;text-decoration: none; margin: 20px;" href="/auth/signup">SIGN UP</a>
+                  <a style="color: white;text-decoration: none;" href="/auth/login">LOGIN</a>
               <% } %>
             </nav>
     </div>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="/your-path-to-fontawesome/css/all.css" rel="stylesheet"> <!--load all styles -->
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/main.css" /> 
+     <link rel=“stylesheet” href=“https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css”>
+    <title>Movie Database</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="/fontawesome/css/all.css" rel="stylesheet"> <!--load all styles -->
+
+</head>
+ <header>
+    <div class="nav_wrapper">
+            <div><a class="logo" href="/" > <img src="/images/logo.png" height="50px" width="85px"></a> 
+            <a href="/home" class="k-link">Movies<span class="k-icon"></span></a>
+        </div>
+            <div class="right1">
+             <nav>
+              <% if (user) { %>
+
+                  <a class="far fa-1x fa-user-circle" style="color: white;text-decoration: none; margin: 20px;"href="/user/profile"></a>
+                  <a style="color: white;text-decoration: none;"" href="/auth/logout">LOGOUT</a>
+
+                </nav>
+            </div>
+            <div class="right2">
+                <nav>
+              <% } else { %>
+                  <a style="color: white;text-decoration: none; margin: 20px;" href="/auth/signup">SIGN UP</a>
+                  <a style="color: white;text-decoration: none;" href="/auth/login">LOGIN</a>
+              <% } %>
+            </nav>
+    </div>
+    </div>
+ </header>
+<body>
+    <%- body %>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    
+    <script src="/js/nothappy.js"></script>
+    <script src=“https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js”></script>
+<script src=“https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js”></script>
+<script src=“https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js”></script>
+</body>
+</html>

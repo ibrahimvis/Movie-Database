@@ -4,6 +4,7 @@
   "description": "# Project #2: Full Stack Application",
   "main": "server.js",
   "scripts": {
+    "start":"node server",
     "test": "nodemon server"
   },
   "repository": {
@@ -11,7 +12,7 @@
     "url": "https://git.generalassemb.ly/ibrahimvis/project_2.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "asma, ibrahim, najlaa",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^4.0.1",

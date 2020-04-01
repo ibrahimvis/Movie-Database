@@ -7,21 +7,25 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
+    <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 </head>
 <body> 
    
     <div style="background-image: url('<%=images[r]%>'); " class="container2">
+
         <div class="wel">
-        <h2>WELCOME</h2> 
+            <h2>WELCOME</h2> 
         <div class="active-pink-4 mb-4">
-            <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+            <input class="form-control" id="search" type="text" placeholder="Search" aria-label="Search">
           </div>
         </div>
-        <!-- <img src="<%=images[r]%>" alt="" height="300"> -->
-        </div>
-      </div>
-    <h2>TOP 5</h2>
+       </div>
+               <!-- <img src="<%=images[r]%>" alt="" height="300"> -->
+
+
+      <div class="top2">
+          <h2>TOP 5</h2>
+
     <div class="top">
     
 <div class="container-fluid">
@@ -35,8 +39,10 @@
 </div>
 </div>
 
-
- <h2>Trending</h2>
+<div class="trending2">
+    <h2>Trending</h2>
+</div>
+ 
 <div class="trending">
     <div class="container-fluid">
         <div class="row">
@@ -46,7 +52,9 @@
     <% }) %>
     </div>
 </div>
-</div>
+</div> 
+          <!-- <div class="gif"><img src="/images/gif.gif"/></div> <br> -->
+
 <div class="footer4"> </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>

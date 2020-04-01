@@ -33,7 +33,7 @@ router.get("/user/addmovie/:id", (req, res) => {
             }
             if (x) {
                 let status = new Status();
-
+                status.user  = req.user._id;
                 status.movie = req.params.id;
                 status.status = "towatch";
                 status.save()
@@ -60,31 +60,30 @@ router.get("/user/addmovie/:id", (req, res) => {
 });
 
 
-router.get("/show/:id", (req, res) => {
+router.get("/show/:id", (req, res, done) => {
+
     Movie.findById(req.params.id)
         .then(movie => {
             if (!req.user)
-                res.render("user/show", { movie });
+                res.render("user/show", { movie, check: false });
             else {
-                User.findById(req.user._id).populate({
-                    path: 'status',
-                    populate: {
-                        path: 'movie',
-                        model: 'Movie'
+                Status.findOne({user: req.user._id, movie: req.params.id}, function (err, status) {
+                    if (err) {
+                        res.send(500, {error: err});
+                        done();
                     }
-                }).then(user => {
-                    user.status.forEach(element => {
-                        if (movie._id == element.movie_id) {
-                            res.render("user/show", {movie, stat: element.status});
-                        }
-                    })
 
-                    res.render("user/show", {movie, stat: "towatch"});
-                }).catch(err => {
-                    console.log(err);
-                    res.send(500, {error: err});
-                });
-                
+                    else {
+                        if (status) {
+                            res.render("user/show", { movie, check: true, stat: status.status });
+                            done();
+                        } else {
+                            res.render("user/show", { movie, check: false });
+                            done();
+                        }
+                    }
+                })
+                //res.render("user/show", { movie, check: false });
             }
         })
         .catch(err => {
@@ -149,7 +148,15 @@ router.get("/user/profile/delete/:id", isLoggedIn, (req, res) => {
                 user.save()
 
                     .then(() => {
-                        res.redirect("/user/profile/");
+                        Status.findByIdAndDelete(req.params.id, function (err, status) {
+                            if (err) {
+                                res.send(500, {error: err});
+                            }
+                            else {
+                                res.redirect("/user/profile/");
+                            }
+                        })
+                        
                     })
 
                     .catch(err => {
@@ -183,4 +190,26 @@ router.get("/user/profile", isLoggedIn, (req, res, next) => {
         }
     });
 });
+
+
+router.get("/user/like/:id", isLoggedIn, (req, res) => {
+    Status.findOne({user: req.user._id, movie: req.params.id}, function (err, status) {
+        if (err) {
+            res.send(500, {error: err});
+        }
+
+        else {
+            if (status.status == "like") 
+                status.status = "towatch";
+            else
+                status.status = "like";
+            
+            status.save();
+            res.redirect("/show/" + req.params.id);
+        }
+    })
+});
+
+
+
 module.exports = router;

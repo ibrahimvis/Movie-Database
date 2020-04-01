@@ -4,8 +4,13 @@
 
 <div class="watchlistContainer">
     <div id="item1">
-        <img src="/images/Avatar.png" alt="Avatar" class="avatar" width="200" height="100"><br>
-        <a>change password</a>
+        <div>
+            <img src="/images/Avatar.png" alt="Avatar" class="avatar" width="200" height="100">
+        </div>
+        <br>
+        <div>
+            <a href="/user/edit">change password</a>
+        </div>
     </div>
 
     <div id="item2">
@@ -13,13 +18,13 @@
         <div>
             <% status.forEach(stat => { %>
 
-                <div>
-                    <img src="<%= stat.movie.image %>" alt="movie image" width="200" height="200"><br>
-                    <p><%= stat.movie.name %></p>
-                    
-                    <a href="/user/profile/delete/<%= stat._id %>">Delete from watchlist</a>
-                    
-                </div>
+            <div>
+                <img src="<%= stat.movie.image %>" alt="movie image" width="200" height="200"><br>
+                <p><%= stat.movie.name %></p>
+
+                <a href="/user/profile/delete/<%= stat._id %>">Delete from watchlist</a>
+
+            </div>
             <% }) %>
         </div>
     </div>

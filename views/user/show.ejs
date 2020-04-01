@@ -21,12 +21,14 @@
                             <div class="icon">
                                 <a class="fab fa-2x fa-youtube" href="<%= movie.url %>"></a>
                                 <% if (user) { %>
+
                                     <a class="fas fa-2x fa-plus-circle" style="margin: 0 20px;" href="/user/addmovie/<%= movie._id %>"></a>
                                     <% if (check) { %>
                                         <% if (stat == "like") { %>
                                             <a class="fab fa-2x fa-gratipay" href="/user/like/<%= movie._id %>"></a>  
                                         <% } else { %>
                                             <a class="fas fa-2x fa-heart" href="/user/like/<%= movie._id %>"></a>                                        
+
                                         <% } %>       
                                     <% } %>
                                 <% } %>

@@ -337,6 +337,7 @@ input[type=text], input[type=password] {
   background-color: rgba(12, 39, 73, 0.986);
   color: white;
 }
+
 .pass2{
     padding-top: 50px;
     margin-left: 15%;
@@ -357,9 +358,4 @@ input[type=text], input[type=password] {
   font-family: 'Times New Roman', Times, serif;
   margin: 22px;
 
-}
-.gif{
-  padding: 20px;
-  margin-left: 20px;
-  padding-bottom: 20px;
 }
